@@ -1,0 +1,59 @@
+Excellent catch — yes 🔑 you’re absolutely right.
+
+When using WhisperX with diarization (--diarize), it relies on Hugging Face’s pyannote.audio models to separate speakers — and those models require a free Hugging Face access token.
+
+Here’s exactly how to set it up under WSL (no CUDA, CPU-only) 👇
+
+🪪 Step 1. Get your Hugging Face token
+
+Go to https://huggingface.co/settings/tokens
+
+Click “New token”
+
+Give it a name (e.g. whisperx)
+
+Set Role → Read (that’s all you need)
+
+Copy the token — it looks like:
+
+hf_LrG1aBcD2eF3gHijklMnOpQrStUvWxYzAB
+
+⚙️ Step 2. Add your token in WSL
+Option A: Environment variable (recommended)
+export HF_TOKEN="hf_yourtokenhere"
+
+
+To make it permanent, add that line to your ~/.bashrc or ~/.bash_profile.
+
+Option B: WhisperX flag
+
+You can also include it directly in the command:
+
+whisperx "1-Mindset-to-scale-your-business-2025.mkv" \
+  --model large-v3 \
+  --language en \
+  --diarize \
+  --device cpu \
+  --compute_type int8 \
+  --hf_token $HF_TOKEN \
+  --output_format txt \
+  --align_output
+
+💡 Why this matters
+
+The diarization step downloads and uses:
+
+pyannote/speaker-diarization@2.1
+
+
+This model is gated — Hugging Face requires you to accept its terms the first time:
+👉 Visit https://huggingface.co/pyannote/speaker-diarization
+
+and click “Access repository” before running WhisperX.
+
+✅ After setup
+
+You’ll get output like:
+
+[00:00:03] Speaker 1: Welcome to the training.
+[00:02:45] Speaker 1: The mindset to scale is...
