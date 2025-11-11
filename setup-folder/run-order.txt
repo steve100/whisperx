@@ -1,0 +1,12 @@
+#I ran them manually
+# install os changes for wsl
+./start-here-prep.sh
+
+# create the pythone environment
+./create-env.sh
+
+# activate the new python environment
+./activate-manually.txt
+
+# install the python modules for whisperx
+./install-whisperx-tools.sh

@@ -7,4 +7,5 @@ ls movies-for-testing/*.MOV
 ls movies-for-testing/*.mkv
 ls movies-for-testing/*.mp4
  
+echo rm *.mp3 *.wav *.txt *.mkv
 

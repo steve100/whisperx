@@ -1,37 +1,45 @@
-# not recently tested.
 
-pip install git+https://github.com/m-bain/whisperx.git
-
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-pip install pyannote.audio
-
-# yet doesn't install hugging_face_cli 
-pip install -U "huggingface_hub[cli]"
+# make sure the create-env.sh was run  now activate the environment
+#
+# little hard coding anyone?
+# just activate before hand
 
 
-#recomendation one
-pip install -U "pyannote.audio>=3.1,<3.2" "huggingface_hub>=0.23" \
-             "torch" "torchaudio" --index-url https://download.pytorch.org/whl/cpu
+# now all commands use that venv
+python -V
+which python
 
-# recomendation two 
-#pip install "huggingface-hub>=0.34.0,<1.0" --force-reinstall
 
-# last recomendation
-pip install "pyannote.audio>=3.1,<3.2" "huggingface-hub>=0.34.0,<1.0" "torch" "torchaudio" --index-url https://download.pytorch.org/whl/cpu
 
-pip install "huggingface-hub>=0.34.0,<1.0" --force-reinstall
+# keep torch/torchaudio matched on 2.8.*
+python -m pip install --no-cache-dir --force-reinstall \
+  torch==2.8.0 torchaudio==2.8.0 \
+  --index-url https://download.pytorch.org/whl/cpu
 
-#check
-pip show huggingface-hub | grep Version
-whisperx --version
 
-echo confirm
-python3 - << 'PY'
-import pyannote.audio, torch, huggingface_hub
-print("pyannote.audio:", pyannote.audio.__version__)
+echo sleeping ; sleep 5
+
+
+# hub < 1.0 for pyannote compatibility
+python -m pip install --no-cache-dir --force-reinstall "huggingface-hub>=0.34.0,<1.0"
+echo sleeping ; sleep 5
+
+# upgrade pyannote.audio into the range WhisperX wants
+python -m pip install --no-cache-dir --upgrade "pyannote.audio>=3.3.2,<3.5"
+echo sleeping ; sleep 5
+
+# (optional) refresh WhisperX to current
+python -m pip install --no-cache-dir -U "git+https://github.com/m-bain/whisperx.git"
+echo sleeping ; sleep 5
+
+
+echo Verify:
+
+python - << 'PY'
+import torch, torchaudio, huggingface_hub, pyannote.audio
 print("torch:", torch.__version__)
+print("torchaudio:", torchaudio.__version__)
 print("huggingface_hub:", huggingface_hub.__version__)
+print("pyannote.audio:", pyannote.audio.__version__)
 PY
 
-echo "check again"
-./new-new.sh

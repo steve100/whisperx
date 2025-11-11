@@ -1,1 +1,0 @@
-source ../whisperx-venv/bin/activate
