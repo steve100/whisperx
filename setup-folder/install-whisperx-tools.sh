@@ -26,7 +26,9 @@ echo sleeping ; sleep 5
 # (optional) refresh WhisperX to current
 #python -m pip install --no-cache-dir -U "git+https://github.com/m-bain/whisperx.git"
 pip install git+https://github.com/m-bain/whisperx.git
+
 echo sleeping ; sleep 5
+
 
 
 echo Verify:
@@ -39,3 +41,5 @@ print("huggingface_hub:", huggingface_hub.__version__)
 print("pyannote.audio:", pyannote.audio.__version__)
 PY
 
+echo "do not know why this helps"
+pip install git+https://github.com/m-bain/whisperx.git
