@@ -1,1 +1,2 @@
+echo "copy and paste this .. make sure you are in the python environment"
 source ~/whisperx-venv/bin/activate

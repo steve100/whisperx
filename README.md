@@ -12,7 +12,9 @@
 cd setup-folder
 ~/whisperx/setup-folder$ cat run-order.txt
 # To reduce confusion, copy and paste the commands to run them.
-# install os changes for wsl
+
+# install os changes for wsl .. 
+# not necessary to repeat this step with new download.
 ./start-here-prep.sh
 
 # create the pythone environment
@@ -34,6 +36,9 @@ cd ~/whisperx
 # clean out the test information modify as necessary
 # there is an rm command echoed at the bottom which is probably what you want
 bash clean-movies-for-testing.sh
+
+#optionally clean
+bash  ./clean-movies-for-testing.sh
 
 #run the conversions
 bash run-movies-for-testing-example.sh
