@@ -1,4 +1,4 @@
-# Whisperx
+# Whisperx - an ML tool 
 
 ## Setup and Tools to use the Whisperx transciption locally
    Uses Windows WSL and CPU only
@@ -25,6 +25,9 @@ source ~/whisperx-venv/bin/activate
 
 # install the python modules for whisperx
 ./install-whisperx-tools.sh
+
+# install whisperx
+./install-more-whisperx.sh
 
 ```
 
