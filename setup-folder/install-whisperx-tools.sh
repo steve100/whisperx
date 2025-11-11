@@ -41,5 +41,3 @@ print("huggingface_hub:", huggingface_hub.__version__)
 print("pyannote.audio:", pyannote.audio.__version__)
 PY
 
-echo "do not know why this helps"
-pip install git+https://github.com/m-bain/whisperx.git

@@ -5,8 +5,11 @@
 # create the pythone environment
 ./create-env.sh
 
-# activate the new python environment
-./activate-manually.txt
+# copy and paste this to activate environment  see ./activate-manually.txt
+source ~/whisperx-venv/bin/activate  
 
 # install the python modules for whisperx
 ./install-whisperx-tools.sh
+
+# install whisperx
+./install-more-whisperx.sh
