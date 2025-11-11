@@ -45,6 +45,9 @@ bash  ./clean-movies-for-testing.sh
 
 #run the conversions
 bash run-movies-for-testing-example.sh
+
+## Packaging
+This does use a Python virtual environment.  It might be better as a container.
 ```
 
 
